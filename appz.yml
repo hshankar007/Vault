@@ -1,7 +1,7 @@
 app:
     name: Vault
     code: VAULT
-    notify: svengathattil@ecloudcontrol.com
+    notify: hshankar@ecloudcontrol.com
 
 build:
     version: 0.4
@@ -11,7 +11,7 @@ build:
     image_template: vault-1.2
 
 deploy:
-    context: sidharth-v/DEV
+    context: alpha-dev
     type: statefulset
     ingress: none
     replicas: 1
@@ -21,12 +21,12 @@ deploy:
 
 volumes:
   - claim: vault-home
-    class: microk8s-hostpath
+    class: cstor-disk-pool
     mount: /appz/home
     name: home
     size: 5Gi
   - claim: vault-data
-    class: microk8s-hostpath
+    class: cstor-disk-pool
     mount: /appz/data
     name: data
     size: 5Gi
